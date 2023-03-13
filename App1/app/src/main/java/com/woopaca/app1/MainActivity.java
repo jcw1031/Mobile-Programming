@@ -1,6 +1,5 @@
 package com.woopaca.app1;
 
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +17,5 @@ public class MainActivity extends AppCompatActivity {
 
         button1.setOnClickListener(view ->
                 Toast.makeText(getApplicationContext(), "버튼 누름", Toast.LENGTH_SHORT).show());
-
     }
 }
