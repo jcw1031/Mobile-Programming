@@ -4,10 +4,10 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
+        android:layout_padding="20dp"
         android:orientation="vertical"
         tools:context=".MainActivity">
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -23,8 +23,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="#8BB2FF"
-            android:text="이건 에디트텍스트임."/>
-    <androidx.appcompat.widget.AppCompatButton
+            android:text="이건 에디트텍스트임."
+            android:inputType="text"/>
+    <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="10dp"

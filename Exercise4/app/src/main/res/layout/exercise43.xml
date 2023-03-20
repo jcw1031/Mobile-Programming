@@ -14,13 +14,15 @@
             android:layout_height="wrap_content"
             android:id="@+id/edit_1"
             android:hint="첫 번째 숫자"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:inputType="number"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/edit_2"
             android:hint="두 번째 숫자"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:inputType="number"/>
 
     <Button
             android:layout_width="match_parent"
