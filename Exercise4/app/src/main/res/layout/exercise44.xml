@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="선택을 시작하겠음?"
+            android:layout_margin="10dp"/>
+    <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시작 ㄱ"
+            android:id="@+id/select_chbox"
+            android:layout_margin="10dp"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/question_tv"
+            android:text="좋아하는 동물 뭐임?"
+            android:layout_margin="10dp"
+            android:visibility="invisible"/>
+    <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rbtn_group"
+            android:layout_margin="10dp"
+            android:visibility="invisible">
+        <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cat_rbtn"
+                android:text="냥이"/>
+        <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dog_rbtn"
+                android:text="멍멍이"/>
+        <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rabbit_rbtn"
+                android:text="토끼"/>
+    </RadioGroup>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/complete_btn"
+            android:text="선택 완료"
+            android:layout_margin="10dp"
+            android:visibility="invisible"/>
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/img_view"
+            android:layout_margin="10dp"
+            android:visibility="invisible"/>
+
+</LinearLayout>

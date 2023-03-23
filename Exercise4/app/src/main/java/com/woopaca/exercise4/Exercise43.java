@@ -15,6 +15,7 @@ public class Exercise43 extends AppCompatActivity {
     private Button btnSub;
     private Button btnMul;
     private Button btnDiv;
+    private Button btnMod;
     private TextView textResult;
 
     private String num1;
@@ -32,8 +33,10 @@ public class Exercise43 extends AppCompatActivity {
             getNumbersEditText();
 
             try {
-                validateEditTextValue();
+                validateEditTextValue(btnAdd);
             } catch (IllegalArgumentException e) {
+                Toast.makeText(getApplicationContext(), "올바른 값 입력하셈",
+                        Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -45,8 +48,9 @@ public class Exercise43 extends AppCompatActivity {
             getNumbersEditText();
 
             try {
-                validateEditTextValue();
+                validateEditTextValue(btnSub);
             } catch (IllegalArgumentException e) {
+
                 return;
             }
 
@@ -58,8 +62,10 @@ public class Exercise43 extends AppCompatActivity {
             getNumbersEditText();
 
             try {
-                validateEditTextValue();
+                validateEditTextValue(btnMul);
             } catch (IllegalArgumentException e) {
+                Toast.makeText(getApplicationContext(), "올바른 값 입력하셈",
+                        Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -71,12 +77,29 @@ public class Exercise43 extends AppCompatActivity {
             getNumbersEditText();
 
             try {
-                validateEditTextValue();
+                validateEditTextValue(btnDiv);
             } catch (IllegalArgumentException e) {
+                Toast.makeText(getApplicationContext(), "올바른 값 입력하셈",
+                        Toast.LENGTH_SHORT).show();
                 return;
             }
 
             result = Integer.parseInt(num1) / Integer.parseInt(num2);
+            textResult.setText(String.valueOf(result));
+        });
+
+        btnMod.setOnClickListener(view -> {
+            getNumbersEditText();
+
+            try {
+                validateEditTextValue(btnMod);
+            } catch (IllegalArgumentException e) {
+                Toast.makeText(getApplicationContext(), "올바른 값 입력하셈",
+                        Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            result = Integer.parseInt(num1) % Integer.parseInt(num2);
             textResult.setText(String.valueOf(result));
         });
     }
@@ -89,6 +112,7 @@ public class Exercise43 extends AppCompatActivity {
         btnSub = findViewById(R.id.btn_sub);
         btnMul = findViewById(R.id.btn_mul);
         btnDiv = findViewById(R.id.btn_div);
+        btnMod = findViewById(R.id.btn_mod);
 
         textResult = findViewById(R.id.tv_result);
     }
@@ -98,10 +122,8 @@ public class Exercise43 extends AppCompatActivity {
         num2 = String.valueOf(edit2.getText());
     }
 
-    private void validateEditTextValue() {
-        if (isEditTextEmpty(num1, num2)) {
-            Toast.makeText(getApplicationContext(), "칸 비어있음.",
-                    Toast.LENGTH_SHORT).show();
+    private void validateEditTextValue(Button btn) {
+        if (isEditTextEmpty(num1, num2) || (btn == btnDiv && num2.equals("0"))) {
             throw new IllegalArgumentException();
         }
     }
