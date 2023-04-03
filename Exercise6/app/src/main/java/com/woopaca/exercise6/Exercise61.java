@@ -23,7 +23,6 @@ public class Exercise61 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         binding = Exercise61Binding.inflate(getLayoutInflater()); //
         setContentView(binding.getRoot()); //
 
