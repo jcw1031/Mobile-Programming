@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+            android:id="@+id/rotation"
+            android:title="회전하기">
+    </item>
+    <group
+            android:id="@+id/radio_group"
+            android:checkableBehavior="single">
+        <item
+                android:id="@+id/image1"
+                android:title="사진1"
+                android:checked="true"/>
+        <item
+                android:id="@+id/image2"
+                android:title="사진2"
+                android:checked="false"/>
+        <item
+                android:id="@+id/image3"
+                android:title="사진3"
+                android:checked="false"/>
+    </group>
+</menu>

@@ -1,32 +1,49 @@
 package com.woopaca.exercise7;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
+import android.view.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import com.woopaca.exercise7.databinding.ActivityMainBinding;
+import com.woopaca.exercise7.databinding.Dialog1Binding;
+import com.woopaca.exercise7.databinding.Toast1Binding;
+
+import static com.woopaca.exercise7.R.id.*;
 
 public class MainActivity extends AppCompatActivity {
 
-    private LinearLayout baseLayout;
-    private Button colorButton;
+    private ActivityMainBinding binding; //
+    private Dialog1Binding dialogBinding;
+    private Toast1Binding toastBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater()); //
+        dialogBinding = Dialog1Binding.inflate(getLayoutInflater());
+        toastBinding = Toast1Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot()); //
 
-        baseLayout = findViewById(R.id.base_layout);
-        colorButton = findViewById(R.id.color_button);
+        registerForContextMenu(binding.colorButton);
 
-        registerForContextMenu(colorButton);
+        binding.dialogButton.setOnClickListener(view -> {
+            DialogInterface.OnClickListener onClickListenerPositive = (dialogInterface, which) -> {
+                binding.nameText.setText(dialogBinding.nameEdit.getText().toString());
+                binding.emailText.setText(dialogBinding.emailEdit.getText().toString());
+            };
+
+            new AlertDialog.Builder(MainActivity.this)
+                    .setTitle("사용자 정보 입력")
+                    .setIcon(R.drawable.ic_launcher_foreground)
+                    .setView(dialogBinding.dialogView)
+                    .setPositiveButton("확인", onClickListenerPositive)
+                    .setNegativeButton("취소", null)
+                    .show();
+        });
     }
 
     @Override
@@ -46,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreateContextMenu(menu, view, menuInfo);
 
         MenuInflater menuInflater = getMenuInflater();
-        if (view == colorButton) {
-            menu.setHeaderTitle("ㅋㅋ");
+        if (view == binding.colorButton) {
+            menu.setHeaderTitle("컨텍스트");
             menuInflater.inflate(R.menu.color_menu, menu);
         }
     }
@@ -61,16 +78,16 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("NonConstantResourceId")
     private void changeColor(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.item_red: {
-                baseLayout.setBackgroundColor(Color.RED);
+            case item_red: {
+                binding.baseLayout.setBackgroundColor(Color.RED);
                 break;
             }
-            case R.id.item_blue: {
-                baseLayout.setBackgroundColor(Color.BLUE);
+            case item_blue: {
+                binding.baseLayout.setBackgroundColor(Color.BLUE);
                 break;
             }
-            case R.id.item_green: {
-                baseLayout.setBackgroundColor(Color.GREEN);
+            case item_green: {
+                binding.baseLayout.setBackgroundColor(Color.GREEN);
             }
         }
     }

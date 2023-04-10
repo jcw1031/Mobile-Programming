@@ -6,16 +6,42 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        android:padding="10dp">
     <TextView
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="우측 상단 메뉴 버튼 눌러보셈"/>
+            android:text="우측 상단 메뉴 버튼"
+            android:layout_margin="5dp"/>
     <Button
             android:id="@+id/color_button"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="길게 눌러보셈"/>
+            android:text="컨텍스트 버튼"
+            android:layout_margin="5dp"/>
+    <Button
+            android:id="@+id/dialog_button"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="눌러보셈"
+            android:layout_margin="5dp"/>
+    <TextView
+            android:id="@+id/name_text"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="이름"
+            android:textSize="20dp"
+            android:layout_margin="5dp"/>
+    <TextView
+            android:id="@+id/email_text"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="이메일"
+            android:textSize="20dp"
+            android:layout_margin="5dp"/>
 </LinearLayout>
