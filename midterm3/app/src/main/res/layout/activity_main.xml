@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+>
+    <data>
+        <variable name="viewModel" type="com.woopaca.midterm3.CalculatorViewModel"/>
+
+        <variable name="additional" type="com.woopaca.midterm3.Operator"/>
+        <variable name="subtraction" type="com.woopaca.midterm3.Operator"/>
+        <variable name="multiplication" type="com.woopaca.midterm3.Operator"/>
+        <variable name="division" type="com.woopaca.midterm3.Operator"/>
+        <variable name="modulo" type="com.woopaca.midterm3.Operator"/>
+        <variable name="exponentiation" type="com.woopaca.midterm3.Operator"/>
+    </data>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="end"
+            android:padding="10dp"
+            tools:context=".MainActivity">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.displayFormula}"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:gravity="end"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:text="@{viewModel.inputString}"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+            <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Advanced"
+                    android:onClick="@{() -> viewModel.advance()}"
+                    android:paddingEnd="20dp"/>
+            <Button
+                    android:id="@+id/modulo_button"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:visibility="invisible"
+                    android:layout_marginHorizontal="3dp"
+                    android:onClick="@{() -> viewModel.inputOperator(modulo)}"
+                    android:text="MOD"/>
+            <Button
+                    android:id="@+id/exponentiation_button"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:visibility="invisible"
+                    android:layout_marginHorizontal="3dp"
+                    android:onClick="@{() -> viewModel.inputOperator(exponentiation)}"
+                    android:text="^"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:textSize="15sp"
+                    android:layout_marginHorizontal="3dp"
+                    android:onClick="@{() -> viewModel.deleteOperandBit()}"
+                    android:text="DELETE"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingVertical="@dimen/linear_padding">
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:onClick="@{() -> viewModel.inputOperandBit('7')}"
+                    android:text="7"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:onClick="@{() -> viewModel.inputOperandBit('8')}"
+                    android:text="8"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:onClick="@{() -> viewModel.inputOperandBit('9')}"
+                    android:text="9"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:onClick="@{() -> viewModel.inputOperator(division)}"
+                    android:text="/"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingVertical="@dimen/linear_padding">
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:onClick="@{() -> viewModel.inputOperandBit('4')}"
+                    android:text="4"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:onClick="@{() -> viewModel.inputOperandBit('5')}"
+                    android:text="5"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:onClick="@{() -> viewModel.inputOperandBit('6')}"
+                    android:text="6"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:onClick="@{() -> viewModel.inputOperator(multiplication)}"
+                    android:text="*"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingVertical="@dimen/linear_padding">
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:onClick="@{() -> viewModel.inputOperandBit('1')}"
+                    android:text="1"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:onClick="@{() -> viewModel.inputOperandBit('2')}"
+                    android:text="2"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:onClick="@{() -> viewModel.inputOperandBit('3')}"
+                    android:text="3"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:onClick="@{() -> viewModel.inputOperator(subtraction)}"
+                    android:text="-"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingVertical="@dimen/linear_padding">
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:onClick="@{() -> viewModel.inputOperandBit('0')}"
+                    android:text="0"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:onClick="@{() -> viewModel.inputOperandBit('.')}"
+                    android:text="."/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:onClick="@{() -> viewModel.calculateAll()}"
+                    android:text="="/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/button_margin"
+                    android:onClick="@{() -> viewModel.inputOperator(additional)}"
+                    android:text="+"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

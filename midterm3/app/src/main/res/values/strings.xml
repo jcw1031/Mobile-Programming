@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">midterm3</string>
+    <item name="button_margin" type="dimen">3dp</item>
+    <item name="linear_padding" type="dimen">5dp</item>
+</resources>

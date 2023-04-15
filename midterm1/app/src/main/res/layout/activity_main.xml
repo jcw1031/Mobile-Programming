@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="viewModel" type="com.woopaca.midterm1.RestaurantViewModel"/>
+
+        <variable name="italian" type="com.woopaca.midterm1.FoodType"/>
+        <variable name="korean" type="com.woopaca.midterm1.FoodType"/>
+        <variable name="japanese" type="com.woopaca.midterm1.FoodType"/>
+
+        <variable name="appetizer" type="com.woopaca.midterm1.Option"/>
+        <variable name="vegetarian" type="com.woopaca.midterm1.Option"/>
+        <variable name="dessert" type="com.woopaca.midterm1.Option"/>
+
+        <variable name="window" type="com.woopaca.midterm1.SeatType"/>
+        <variable name="anywhere" type="com.woopaca.midterm1.SeatType"/>
+    </data>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            tools:context=".MainActivity" android:orientation="vertical">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KNU Restaurant"
+                android:textSize="30sp"
+                android:layout_margin="5dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Food type"/>
+        <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+            <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Italian"
+                    android:onClick="@{() -> viewModel.selectFoodType(italian)}"
+                    android:layout_weight="1"/>
+            <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Korean"
+                    android:onClick="@{() -> viewModel.selectFoodType(korean)}"
+                    android:layout_weight="1"/>
+            <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Japanese"
+                    android:onClick="@{() -> viewModel.selectFoodType(japanese)}"
+                    android:layout_weight="1"/>
+        </RadioGroup>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Option"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+            <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Appetizer"
+                    android:onCheckedChanged="@{() -> viewModel.changeOption(appetizer)}"
+                    android:layout_weight="1"/>
+            <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vegetarian"
+                    android:onCheckedChanged="@{() -> viewModel.changeOption(vegetarian)}"
+                    android:layout_weight="1"/>
+            <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dessert"
+                    android:onCheckedChanged="@{() -> viewModel.changeOption(dessert)}"
+                    android:layout_weight="1"/>
+        </LinearLayout>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seat type"/>
+        <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+            <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Window"
+                    android:onClick="@{() -> viewModel.selectSeatType(window)}"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="20dp"/>
+            <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Anywhere"
+                    android:onClick="@{() -> viewModel.selectSeatType(anywhere)}"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="20dp"/>
+        </RadioGroup>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Number of people"
+                    android:layout_margin="5dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.numberOfPeople}"
+                    android:textColor="@color/black"
+                    android:layout_margin="5dp"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:onClick="@{() -> viewModel.increaseNumberOfPeople()}"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginVertical="5dp"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:onClick="@{() -> viewModel.decreaseNumberOfPeople()}"
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginStart="5dp"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:baselineAligned="true">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TOTAL"
+                    android:textSize="20sp"
+                    android:layout_margin="5dp"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.totalPrice}"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/black"/>
+        </LinearLayout>
+        <ImageView
+                android:id="@+id/food_image"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitCenter"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="예약 완료"
+                android:layout_gravity="center_horizontal"
+                android:onClick="@{() -> viewModel.completeSelection()}"
+                android:layout_margin="5dp"/>
+    </LinearLayout>
+</layout>
