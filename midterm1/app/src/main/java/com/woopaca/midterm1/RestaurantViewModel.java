@@ -28,10 +28,6 @@ public class RestaurantViewModel extends ViewModel {
         return Objects.requireNonNull(foodType.getValue()).getName();
     }
 
-    public MutableLiveData<ArrayList<Option>> getOptions() {
-        return options;
-    }
-
     public String getOptionsName() {
         StringBuilder optionsName = new StringBuilder();
         ArrayList<Option> options = this.options.getValue();
@@ -49,10 +45,6 @@ public class RestaurantViewModel extends ViewModel {
 
     private static boolean isNotEmpty(StringBuilder optionsName) {
         return optionsName.length() != 0;
-    }
-
-    public MutableLiveData<SeatType> getSeatType() {
-        return seatType;
     }
 
     public String getSeatTypeName() {
