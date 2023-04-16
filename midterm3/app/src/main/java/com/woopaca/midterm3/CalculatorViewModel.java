@@ -93,6 +93,8 @@ public class CalculatorViewModel extends ViewModel {
         this.input.setValue(new StringBuilder());
         if (input.length() == 0) {
             Toast.makeText(context, "수를 입력하세요.", Toast.LENGTH_SHORT).show();
+            this.input.setValue(new StringBuilder());
+            inputString.setValue("");
             return;
         }
 

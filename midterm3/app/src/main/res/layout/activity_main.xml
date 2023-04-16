@@ -2,16 +2,30 @@
 <layout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
->
+        >
     <data>
-        <variable name="viewModel" type="com.woopaca.midterm3.CalculatorViewModel"/>
+        <variable
+                name="viewModel"
+                type="com.woopaca.midterm3.CalculatorViewModel"/>
 
-        <variable name="additional" type="com.woopaca.midterm3.Operator"/>
-        <variable name="subtraction" type="com.woopaca.midterm3.Operator"/>
-        <variable name="multiplication" type="com.woopaca.midterm3.Operator"/>
-        <variable name="division" type="com.woopaca.midterm3.Operator"/>
-        <variable name="modulo" type="com.woopaca.midterm3.Operator"/>
-        <variable name="exponentiation" type="com.woopaca.midterm3.Operator"/>
+        <variable
+                name="additional"
+                type="com.woopaca.midterm3.Operator"/>
+        <variable
+                name="subtraction"
+                type="com.woopaca.midterm3.Operator"/>
+        <variable
+                name="multiplication"
+                type="com.woopaca.midterm3.Operator"/>
+        <variable
+                name="division"
+                type="com.woopaca.midterm3.Operator"/>
+        <variable
+                name="modulo"
+                type="com.woopaca.midterm3.Operator"/>
+        <variable
+                name="exponentiation"
+                type="com.woopaca.midterm3.Operator"/>
     </data>
     <LinearLayout
             android:layout_width="match_parent"
