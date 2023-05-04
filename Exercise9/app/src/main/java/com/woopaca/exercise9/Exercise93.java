@@ -35,8 +35,6 @@ public class Exercise93 extends AppCompatActivity {
         LinearLayout imageLayout = findViewById(R.id.image_layout);
         imageLayout.addView(customGraphicView);
 
-        setTitle("간단 그림판 (개선)");
-
         initView();
         setClickEventListener();
     }
