@@ -52,7 +52,7 @@ public class Exercise111 extends AppCompatActivity {
                 R.drawable.mov21, R.drawable.mov22, R.drawable.mov23, R.drawable.mov24, R.drawable.mov25
         };
 
-        String[] posterTitle = {
+        String[] movieTitle = {
                 "써니", "완득이", "괴물", "라디오 스타", "비열한 거리",
                 "왕의 남자", "아일랜드", "웰컴투 동막골", "헬보이", "Back to the Future",
                 "여인의 향기", "쥬라기 공원", "포레스트 검프", "Groundhog Day", "혹성탈출: 진화의 시작",
@@ -73,7 +73,7 @@ public class Exercise111 extends AppCompatActivity {
                 ImageView posterImageView = dialogView.findViewById(R.id.poster_image_view);
                 posterImageView.setImageResource(posterID[position]);
                 new AlertDialog.Builder(Exercise111.this)
-                        .setTitle(posterTitle[position])
+                        .setTitle(movieTitle[position])
                         .setIcon(R.drawable.movie_icon)
                         .setView(dialogView)
                         .setNegativeButton("닫기", null)
