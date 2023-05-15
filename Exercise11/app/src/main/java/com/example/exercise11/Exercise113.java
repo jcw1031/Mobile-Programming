@@ -14,7 +14,7 @@ public class Exercise113 extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise113);
-        setTitle("스피너 테스트");
+        setTitle("직접 풀어보기 11-3");
 
         Integer[] posterID = {
                 R.drawable.mov01, R.drawable.mov02, R.drawable.mov03, R.drawable.mov04, R.drawable.mov05,

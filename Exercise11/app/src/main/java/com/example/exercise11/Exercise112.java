@@ -1,34 +1,34 @@
 package com.example.exercise11;
 
-import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
+import android.widget.Gallery;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Exercise111 extends AppCompatActivity {
+public class Exercise112 extends AppCompatActivity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exercise111);
-        setTitle("직접 풀어보기 11-1");
+        setContentView(R.layout.activity_exercise112);
+        setTitle("직접 풀어보기 11-2");
 
-        final GridView gridView = findViewById(R.id.grid_view);
-        MyGridAdapter gridAdapter = new MyGridAdapter(this);
-        gridView.setAdapter(gridAdapter);
+        Gallery gallery = findViewById(R.id.poster_gallery);
+        MyGalleryAdapter galleryAdapter = new MyGalleryAdapter(this);
+        gallery.setAdapter(galleryAdapter);
     }
 
-    class MyGridAdapter extends BaseAdapter {
+    class MyGalleryAdapter extends BaseAdapter {
 
-        Context context;
+        private final Context context;
 
-        Integer[] posterID = {
+        private final Integer[] posterID = {
                 R.drawable.mov01, R.drawable.mov02, R.drawable.mov03, R.drawable.mov04, R.drawable.mov05,
                 R.drawable.mov06, R.drawable.mov07, R.drawable.mov08, R.drawable.mov09, R.drawable.mov10,
                 R.drawable.mov11, R.drawable.mov12, R.drawable.mov13, R.drawable.mov14, R.drawable.mov15,
@@ -36,7 +36,7 @@ public class Exercise111 extends AppCompatActivity {
                 R.drawable.mov21, R.drawable.mov22, R.drawable.mov23, R.drawable.mov24, R.drawable.mov25
         };
 
-        String[] movieTitle = {
+        private final String[] movieTitle = {
                 "써니", "완득이", "괴물", "라디오 스타", "비열한 거리",
                 "왕의 남자", "아일랜드", "웰컴투 동막골", "헬보이", "Back to the Future",
                 "여인의 향기", "쥬라기 공원", "포레스트 검프", "Groundhog Day", "혹성탈출: 진화의 시작",
@@ -44,7 +44,7 @@ public class Exercise111 extends AppCompatActivity {
                 "쿵푸팬더 2", "짱구는 못말려: 태풍을 부르는 나의 신부", "아저씨", "아바타", "The Godfather"
         };
 
-        public MyGridAdapter(Context context) {
+        public MyGalleryAdapter(Context context) {
             this.context = context;
         }
 
@@ -66,27 +66,27 @@ public class Exercise111 extends AppCompatActivity {
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
             ImageView imageView = new ImageView(context);
-            imageView.setLayoutParams(new GridView.LayoutParams(200, 300));
+            imageView.setLayoutParams(new Gallery.LayoutParams(200, 300));
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
             imageView.setPadding(5, 5, 5, 5);
             imageView.setImageResource(posterID[position]);
 
             imageView.setOnClickListener(view -> {
-                @SuppressLint("ViewHolder")
-                View dialogView = View.inflate(Exercise111.this, R.layout.exercise111_dialog, null);
-                ImageView posterImageView = dialogView.findViewById(R.id.poster_image_view);
+                ImageView posterImageView = findViewById(R.id.poster_image_view);
+                posterImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
                 posterImageView.setImageResource(posterID[position]);
-                new AlertDialog.Builder(Exercise111.this)
-                        .setTitle(movieTitle[position])
-                        .setIcon(R.drawable.movie_icon)
-                        .setView(dialogView)
-                        .setNegativeButton("닫기", null)
-                        .show();
+
+                View toastView =
+                        View.inflate(Exercise112.this, R.layout.exercise_112_toast, null);
+                TextView toastText = toastView.findViewById(R.id.movie_toast_text);
+                toastText.setText(movieTitle[position]);
+                Toast toast = new Toast(Exercise112.this);
+                toast.setView(toastView);
+                toast.setDuration(Toast.LENGTH_SHORT);
+                toast.show();
             });
 
             return imageView;
         }
-
     }
-
 }
