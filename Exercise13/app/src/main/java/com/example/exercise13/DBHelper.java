@@ -13,7 +13,7 @@ import static com.example.exercise13.FeedEntry.TABLE_NAME;
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_ENTRIES =
-            "CREATE TABLE " + TABLE_NAME + " (" +
+            "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
                     COLUMN_NAME_ID + " CHAR(20) PRIMARY KEY," +
                     COLUMN_NAME_NUMBER + " INTEGER" +
                     ")";

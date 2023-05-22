@@ -15,7 +15,7 @@ import static com.example.exercise13.FeedEntry.COLUMN_NAME_NUMBER;
 import static com.example.exercise13.FeedEntry.DATABASE_VERSION;
 import static com.example.exercise13.FeedEntry.TABLE_NAME;
 
-public class MainActivity extends AppCompatActivity {
+public class Exercise122 extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private DBHelper dbHelper;
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setLifecycleOwner(this);
 
-        dbHelper = new DBHelper(MainActivity.this);
+        dbHelper = new DBHelper(Exercise122.this);
 
         binding.initButton.setOnClickListener(view -> {
             db = dbHelper.getWritableDatabase();
@@ -42,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
             String insertName = binding.nameEditText.getText().toString();
             int insertNumber = Integer.parseInt(binding.numberEditText.getText().toString());
             ContentValues values = createValue(insertName, insertNumber);
-            db.insert(TABLE_NAME, null, values);
 
+            db.insert(TABLE_NAME, null, values);
             db.close();
-            Toast.makeText(MainActivity.this, "입력 완료", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Exercise122.this, "입력 완료", Toast.LENGTH_SHORT).show();
         });
 
         binding.inquiryButton.setOnClickListener(view -> {
@@ -68,6 +68,32 @@ public class MainActivity extends AppCompatActivity {
 
             cursor.close();
             db.close();
+        });
+
+        binding.updateButton.setOnClickListener(view -> {
+            db = dbHelper.getWritableDatabase();
+
+            String selection = COLUMN_NAME_ID + " = ?";
+            String[] selectionArguments = {binding.nameEditText.getText().toString()};
+
+            String insertName = binding.nameEditText.getText().toString();
+            int insertNumber = Integer.parseInt(binding.numberEditText.getText().toString());
+            ContentValues values = createValue(insertName, insertNumber);
+
+            db.update(TABLE_NAME, values, selection, selectionArguments);
+            db.close();
+            Toast.makeText(Exercise122.this, "수정 완료", Toast.LENGTH_SHORT).show();
+        });
+
+        binding.deleteButton.setOnClickListener(view -> {
+            db = dbHelper.getWritableDatabase();
+
+            String selection = COLUMN_NAME_ID + " = ?";
+            String[] selectionArguments = {binding.nameEditText.getText().toString()};
+
+            db.delete(TABLE_NAME, selection, selectionArguments);
+            db.close();
+            Toast.makeText(Exercise122.this, "삭제 완료", Toast.LENGTH_SHORT).show();
         });
     }
 
